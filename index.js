@@ -10,6 +10,14 @@ let cardsEl = document.querySelector("#cards-el")
 // let sumEl = document.querySelector("#sum-el")
 // CASH OUT
 
+let player = {
+    name : "Selaelo",
+    chips : 145
+
+}
+
+let playerEl = document.getElementById("player-el")
+playerEl.textContent = player.name + ": $" + player.chips
 //Create a function, getRandomCard(), that always returns the number 5 
 function getRandomCard() {
     let randomNum = Math.floor(Math.random() * 13) + 1
@@ -58,10 +66,12 @@ function renderGame() {
 
 
 function newCard() {
-    let card = getRandomCard()
-    sum += card
-    // Puch the card to the cards array
-    cards.push(card)
-
-    renderGame()
+    if (isAlive === true && hasBlackJack === false) {
+        let card = getRandomCard()
+        sum += card
+        // Puch the card to the cards array
+        cards.push(card)
+    
+        renderGame()
+    }
 }
